@@ -1,7 +1,7 @@
 import React from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Navbar from "./components/pages/Navbar";
-import Home from "./components/pages/Homepage";
+import Homepage from "./components/pages/Homepage";
 import Users from "./components/userspage/RecentUsers";
 import Dashboard from "./components/dashboard/maindashboard/Dashboard";
 import Analytics from "./components/pages/Analytics";
@@ -10,6 +10,7 @@ import Profile from "./components/pages/Profile";
 import Logout from "./components/pages/Logout";
 import Notifications from "./components/pages/Notifications";
 import ServicesPage from "./components/dashboard/services/servicesmain/ServicesPage";
+import Home from "./components/dashboard/Advertisements/banners/Homebanners/OfferBanners/homeOffer";
 // import UserProfile from "./components/UserProfile";
 const App = () => {
   return (
@@ -17,7 +18,7 @@ const App = () => {
       <div>
         <Navbar />
         <Routes>
-          <Route path="/" element={<Home />} />
+          <Route path="/" element={<Homepage />} />
           <Route path="/users" element={<Users />} />
           {/* <Route path="/users/:userId" element={<UserProfile />} /> */}
           <Route path="admin/dashboard" element={<Dashboard />} />
@@ -25,6 +26,7 @@ const App = () => {
           <Route path="/approvals" element={<Approvals />} />
           <Route path="/profile" element={<Profile />} />
           <Route path="admin/dashboard/services" element={<ServicesPage />} />
+          <Route path="/admin/dashboard/advertisements" element={<Home />} />
           <Route path="/logout" element={<Logout />} />
           <Route path="/notifications" element={<Notifications />} />
         </Routes>

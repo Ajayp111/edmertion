@@ -1,11 +1,9 @@
-// SupportPage.js
 import React from "react";
-
+import MainSupport from "./mainsupport";
 const SupportPage = () => {
   return (
     <div>
-      <h1>Support Page</h1>
-      {/* Your Support content goes here */}
+      <MainSupport />
     </div>
   );
 };

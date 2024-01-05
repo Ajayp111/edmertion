@@ -3,7 +3,7 @@ import { Card, Typography, List, ListItem } from "@material-tailwind/react";
 import BlogsPage from "../../blogs/Blogspage";
 import ServicesPage from "./ServicesPage";
 import SupportPage from "../../support/SupportPage";
-
+import Home from "../../Advertisements/home";
 export function DefaultSidebar() {
   const [activePage, setActivePage] = useState("blogs");
   const [isMobile, setIsMobile] = useState(window.innerWidth < 640);
@@ -32,6 +32,8 @@ export function DefaultSidebar() {
         return <ServicesPage />;
       case "support":
         return <SupportPage />;
+      case "home":
+        return <Home />;
       default:
         return null;
     }
@@ -70,6 +72,14 @@ export function DefaultSidebar() {
               }`}
             >
               Support
+            </ListItem>
+            <ListItem
+              onClick={() => handlePageChange("home")}
+              className={`text-xl text-center cursor-pointer px-4 py-2 ${
+                activePage === "home" ? "bg-gray-200" : ""
+              }`}
+            >
+              Home
             </ListItem>
           </List>
         </Card>
