@@ -1,0 +1,46 @@
+/* Navbar.css */
+
+.logo {
+  margin-right: auto;
+  margin-left: 30px;
+  margin-top: 30px; /* Pushes the logo to the left */
+  color: black;
+}
+
+.navbar {
+  background-color: whitesmoke;
+  color: white;
+  padding: 15px;
+}
+
+.navbar-list {
+  list-style-type: none;
+  margin: 10;
+  padding: 10;
+  display: flex;
+  justify-content: flex-end;
+  text-align: center;
+  margin-right: 30px;
+  margin-bottom: 30px;
+}
+
+.navbar-list li {
+  margin-right: 15px;
+}
+.navbar-list li:first-child {
+  margin-left: 0; /* Remove margin for the first link */
+}
+
+.navbar-list li a {
+  text-decoration: none;
+  color: black;
+  size: 10vh;
+  text-align: center;
+}
+
+/* Style for notifications icon */
+.navbar-list li a svg {
+  /* Add styles for your notifications icon */
+  color: blue; /* Change the color if needed */
+  font-size: 20px; /* Adjust the size as per your design */
+}

@@ -1,0 +1,34 @@
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 20px;
+  position: relative; /* Parent container for absolute positioning */
+}
+
+.users-container {
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 20px;
+  background-color: #f9f9f9;
+  margin-bottom: 20px;
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 70%;
+  padding-right: 10px; /* Padding on the right side */
+}
+
+.users-list {
+  list-style: none;
+  padding: 0;
+  column-gap: 1em;
+}
+
+.user-item {
+  margin-bottom: 8px;
+}
+
+.user-item span {
+  color: #666;
+}
