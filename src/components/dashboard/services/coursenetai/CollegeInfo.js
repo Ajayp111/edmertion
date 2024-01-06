@@ -1,57 +1,105 @@
 import React from "react";
+import { Card, Button, Grid, IconButton } from "@material-ui/core";
 import StarIcon from "@mui/icons-material/Star";
-import IconButton from "@mui/material/IconButton";
 import DeleteIcon from "@mui/icons-material/Delete";
 import EditNoteIcon from "@mui/icons-material/EditNote";
 
-const CourseInfo = ({ details, onEdit, onDelete }) => {
+import { StarBorder, Edit, Delete } from "@material-ui/icons";
+import Rating from "@mui/material/Rating";
+
+const CollegeInfo = ({ details, onEdit, onDelete }) => {
   if (!details) {
     return <div>No details available</div>;
   }
-
   return (
-    <div className="bg-white rounded-lg shadow p-6 w-full lg:w-12/15 flex">
-      <img
-        src="https://img.freepik.com/premium-vector/letter-e-logo-design-with-polygonal-style-hexagonal-logo-with-gradient-blue_15602-643.jpg"
-        alt="Random college photo"
-        className="w-full h-48 object-contain mb-4 rounded-lg shadow-lg mr-4"
-        style={{ maxWidth: "150px", height: "auto" }}
-      />
-      <div className="flex-1 lg:pl-4 ">
-        <div>
-          <h1 className="text-xl font-semibold mb-4">{details.institution}</h1>
-          <p className="text-gray-500 mb-2">Course :{details.programme}</p>
-          <p className="text-gray-500 mb-2">
-            Eligibility :{details.eligibility}
-          </p>
-          <p className="text-gray-500 mb-2">Fees :{details.fees} Lakhs INR</p>
-        </div>
-        <div className="flex justify-between items-center mt-3">
-          <div>
-            <h1>
-              <IconButton>
-                <StarIcon />
-              </IconButton>
-              <IconButton>
-                <StarIcon />
-              </IconButton>
-              <IconButton>
-                <StarIcon />
-              </IconButton>
-            </h1>
-          </div>
-          <div className="flex">
-            <button className="mr-2 py-3 text-gray-500 text-xl">
-              <EditNoteIcon />
-            </button>
-            <button className="text-gray-500 py-3 text-xl">
-              <DeleteIcon />
-            </button>
-          </div>
-        </div>
-      </div>
+    <div
+      style={{
+        maxWidth: "100%",
+        overflowX: "auto",
+        border: "1px solid #ccc",
+        padding: "10px",
+      }}
+    >
+      <Grid container spacing={2}>
+        <Grid item xs={12}>
+          <Card style={{ height: "225px", width: "100%" }}>
+            <Grid container spacing={3}>
+              <Grid item xs={4}>
+                <img
+                  src={details.imageUrl}
+                  alt={details.institution}
+                  style={{
+                    maxWidth: "100%",
+                    height: "auto",
+                    maxHeight: "auto",
+                  }}
+                />
+              </Grid>
+              <Grid item xs={4}>
+                <Grid container direction="column">
+                  <h3 style={{ fontWeight: "bold", fontSize: "1.5rem" }}>
+                    {details.institution}
+                  </h3>
+                  <p>
+                    <strong>Course: </strong> {details.programme}
+                  </p>
+                  <p>
+                    <strong>Eligibility:</strong> {details.eligibility}
+                  </p>
+                  <p>
+                    <strong>Fees:</strong>
+                    {details.fees} Lakhs INR
+                  </p>
+                </Grid>
+              </Grid>
+              <Grid item xs={4}>
+                <Grid container direction="column">
+                  <div style={{ display: "flex", alignItems: "center" }}>
+                    <IconButton>
+                      <StarIcon />
+                    </IconButton>
+                    <IconButton>
+                      <StarIcon />
+                    </IconButton>
+                    <IconButton>
+                      <StarIcon />
+                    </IconButton>
+                  </div>
+                  <div style={{ marginTop: "10px", padding: "5px" }}>
+                    <Button
+                      variant="contained"
+                      color="primary"
+                      size="small"
+                      style={{
+                        backgroundColor: "light-red",
+                        color: "#FFF",
+                        marginTop: "15px",
+                      }}
+                    >
+                      <Edit />
+                    </Button>
+                    <Button
+                      variant="contained"
+                      color="secondary"
+                      size="small"
+                      style={{
+                        backgroundColor: "blue",
+                        color: "#FFF",
+                        marginTop: "15px",
+                        marginLeft: "5px",
+                      }}
+                    >
+                      <Delete />
+                    </Button>
+                  </div>
+                </Grid>
+              </Grid>
+            </Grid>
+          </Card>
+        </Grid>
+      </Grid>
     </div>
   );
 };
 
-export default CourseInfo;
+export default CollegeInfo;

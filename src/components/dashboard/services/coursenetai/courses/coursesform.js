@@ -1,24 +1,26 @@
 import React, { useState } from "react";
-import Fininfo from "./fininfo";
-function Finform() {
+import CourseList from "./courseList";
+
+function CoursesForm() {
   const [isOpen, setIsOpen] = useState(false);
-  const [bankData, setBankData] = useState([]);
+  const [imageUrl, setImageUrl] = useState("");
+  const [courseData, setCourseData] = useState([]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(e);
-    const newBank = {
-      interestRate: e.target.interestRate.value,
-      forMale: e.target.forMale.value,
-      forWomen: e.target.forWomen.value,
-      processingFees: e.target.processingFees.value,
-      maximumLoanAmount: e.target.maximumLoanAmount.value,
+    const newCourse = {
+      courseName: e.target.courseName.value,
+      language: e.target.language.value,
+      organisation: e.target.organisation.value,
+      level: e.target.level.value,
+      price: e.target.price.value,
+      mode: e.target.mode.value,
+      contact: e.target.contact.value,
       imageUrl: imageUrl,
     };
-    setBankData([...bankData, newBank]);
+    setCourseData([...courseData, newCourse]);
     setIsOpen(false);
   };
-  const [imageUrl, setImageUrl] = useState("");
 
   const handleImageChange = (e) => {
     if (e.target.files.length > 0) {
@@ -38,6 +40,18 @@ function Finform() {
         <div className="p-4">
           <form onSubmit={handleSubmit}>
             <div>
+              <label htmlFor="courseName" className="block">
+                Course Name
+              </label>
+              <input
+                id="courseName"
+                name="courseName"
+                type="text"
+                className="border p-2 w-full rounded"
+                placeholder="Enter Name Of the Course"
+              />
+            </div>
+            <div>
               <input
                 id="image"
                 name="image"
@@ -53,53 +67,78 @@ function Finform() {
               />
             </div>
             <div>
-              <label htmlFor="interestRate" className="block">
-                InterestRate
+              <label htmlFor="language" className="block">
+                Name of the language
               </label>
               <input
-                id="interestRate"
-                name="interestRate"
+                id="language"
+                name="language"
                 type="text"
                 className="border p-2 w-full rounded"
-                placeholder="Enter the InterestRate"
+                placeholder="Enter the language"
               />
             </div>
             <div>
-              <label htmlFor="forMale" className="block">
-                Interest Rate For Males
+              <label htmlFor="organisation" className="block">
+                Name of the Organisation
               </label>
               <input
-                id="forMale"
-                name="forMale"
+                id="organisation"
+                name="organisation"
                 type="text"
                 className="border p-2 w-full rounded"
-                placeholder="Interest Rate For Males"
+                placeholder="Enter Name Of the Organisation"
               />
             </div>
             <div>
-              <label htmlFor="forWomen" className="block">
-                Interest Rate For Women
+              <label htmlFor="level" className="block">
+                Enter the level
               </label>
               <input
-                id="forWomen"
-                name="forWomen"
+                id="level"
+                name="level"
                 type="text"
                 className="border p-2 w-full rounded"
-                placeholder="Interest Rate For Women"
+                placeholder="Enter the Level "
               />
             </div>
             <div>
               <label htmlFor="price" className="block">
-                Processing Fees
+                Enter the Price
               </label>
               <input
-                id="processingFees"
-                name="processingFees"
+                id="price"
+                name="price"
                 type="text"
                 className="border p-2 w-full rounded"
-                placeholder="Enter the Processing Fees "
+                placeholder="Enter the Price "
               />
             </div>
+            <div>
+              <label htmlFor="mode" className="block">
+                online/offline
+              </label>
+              <input
+                id="mode"
+                name="mode"
+                type="text"
+                className="border p-2 w-full rounded"
+                placeholder="online/offline"
+              />
+            </div>
+            <div>
+              <label htmlFor="contact" className="block">
+                Contact
+              </label>
+              <input
+                id="contact"
+                name="contact"
+                type="text"
+                className="border p-2 w-full rounded"
+                placeholder="Enter the Contact"
+              />
+            </div>
+
             {/* Form submission buttons */}
             <div className="flex justify-between">
               <button
@@ -126,9 +165,9 @@ function Finform() {
           Add Course
         </button>
       )}
-      <Fininfo details={bankData} />
+      <CourseList details={courseData} />
     </div>
   );
 }
 
-export default Finform;
+export default CoursesForm;

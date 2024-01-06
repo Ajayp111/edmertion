@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import AddCollegeForm from "./CollegeForm";
 import CourseInfo from "./CollegeInfo";
-
+import Dummycoursenetai from "./dummycoursenetai";
 const CollegeManager = () => {
   const [universityDetails, setUniversityDetails] = useState(null);
 
@@ -15,14 +15,16 @@ const CollegeManager = () => {
     <div>
       <AddCollegeForm setUniversityDetails={setUniversityDetails} />
 
-      {/* Render CourseInfo based on universityDetails */}
       {universityDetails && (
         <CourseInfo
           details={universityDetails}
-          onEdit={handleEdit}
-          onDelete={handleDelete}
+          // onEdit={handleEdit}
+          // onDelete={handleDelete}
         />
       )}
+      <>
+        <Dummycoursenetai />
+      </>
     </div>
   );
 };

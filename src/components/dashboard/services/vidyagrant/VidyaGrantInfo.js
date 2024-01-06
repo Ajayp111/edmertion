@@ -8,7 +8,7 @@ const VidyaGrantInfo = ({ data }) => {
         <div className="grid grid-cols-3 gap-4">
           <div className="col-span-1">
             <img
-              src={data.photo}
+              src={data.imageData}
               alt="company"
               className="w-full h-full object-cover"
             />

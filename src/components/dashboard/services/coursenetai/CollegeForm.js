@@ -3,6 +3,8 @@ import IconButton from "@mui/material/IconButton";
 import CloseIcon from "@mui/icons-material/Close";
 const AddCollegeForm = ({ setUniversityDetails }) => {
   const [isOpen, setIsOpen] = useState(false);
+  const [imageUrl, setImageUrl] = useState("");
+
   const openForm = () => setIsOpen(true);
   const closeForm = () => setIsOpen(false);
 
@@ -20,6 +22,7 @@ const AddCollegeForm = ({ setUniversityDetails }) => {
       seatsAvailable: formData.get("seatsAvailable"),
       averagePackage: formData.get("averagePackage"),
       infrastructure: formData.get("infrastructure"),
+      imageUrl: imageUrl,
     };
     setUniversityDetails(details);
     closeForm();
@@ -38,6 +41,13 @@ const AddCollegeForm = ({ setUniversityDetails }) => {
     setUniversityDetails(null); // Reset university details after deletion
     // Additionally, close any edit mode if it's open
     // Assuming `editMode` is a state variable used for edit mode
+  };
+  const handleImageChange = (e) => {
+    if (e.target.files.length > 0) {
+      setImageUrl(URL.createObjectURL(e.target.files[0]));
+    } else {
+      setImageUrl("");
+    }
   };
 
   return (
@@ -62,9 +72,20 @@ const AddCollegeForm = ({ setUniversityDetails }) => {
             </h2>
 
             {/* Add Photo Section */}
-            <div className="mt-4">
-              <h3 className="text-lg font-semibold mb-2">Add Photo</h3>
-              <input type="file" accept="image/*" />
+            <div>
+              <input
+                id="image"
+                name="image"
+                type="file"
+                className="border p-2 w-full rounded"
+                onChange={handleImageChange}
+              />
+
+              <img
+                src={imageUrl}
+                alt="Selected photo"
+                className="border p-2 w-full rounded"
+              />
             </div>
 
             {/* Form to add a new college */}

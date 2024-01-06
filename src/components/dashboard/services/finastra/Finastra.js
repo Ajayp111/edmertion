@@ -1,7 +1,7 @@
 import React from "react";
 import Search from "./search";
-import Finform from "./finform";
 import Finbanks from "./finbanks";
+import Finform from "./finform";
 export default function Finastra() {
   return (
     <div>
@@ -10,8 +10,8 @@ export default function Finastra() {
       </div>
       <div className="w-full">
         <Search />
-        <Finform />
         <Finbanks />
+        <Finform />
       </div>
     </div>
   );

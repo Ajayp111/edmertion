@@ -62,7 +62,7 @@ const dummycoursenetai = () => {
                 </Grid>
                 <Grid item xs={4}>
                   <Grid container direction="column">
-                    <h3 style={{ fontWeight: "bold", fontSize: "1.5rem" }}>
+                     <h3 style={{ fontWeight: "bold", fontSize: "1.5rem" }}>
                       {university.name}
                     </h3>
                     <p>

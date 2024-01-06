@@ -29,7 +29,7 @@ const useStyles = makeStyles((theme) => ({
 
 function VidyaGrantForm({ onSubmit }) {
   const classes = useStyles();
-
+  const [imageData, setImageData] = useState("");
   const [open, setOpen] = useState(false);
 
   const [formData, setFormData] = useState({
@@ -50,30 +50,26 @@ function VidyaGrantForm({ onSubmit }) {
     applicableTo: "",
   });
   const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData((prevData) => ({
-      ...prevData,
-      [name]: value,
-    }));
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value,
+    });
   };
-
-  const handlePhotoChange = (e) => {
-    setFormData({ ...formData, photo: e.target.files[0] });
-  };
-  const handleSubmit = async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
-    setFormData((prevData) => ({
-      ...prevData,
-    }));
-    try {
-      const response = await axios.post("https:/scholarships", formData);
+    const scholarshipDetails = {
+      name: formData.name,
+      organisation: formData.organisation,
+      amount: formData.amount,
+      about: formData.about,
+      eligibility: formData.eligibility,
+      applicationProcess: formData.applicationProcess,
+      contact: formData.contact,
+      applicableTo: formData.applicableTo,
+      imageData: imageData,
+    };
 
-      console.log(response.data);
-
-      setOpen(false);
-    } catch (error) {
-      console.error("Error:", error);
-    }
+    console.log(scholarshipDetails);
   };
 
   const handleOpen = () => {
@@ -82,6 +78,14 @@ function VidyaGrantForm({ onSubmit }) {
 
   const handleClose = () => {
     setOpen(false);
+  };
+
+  const handleImageChange = (e) => {
+    if (e.target.files.length > 0) {
+      setImageData(URL.createObjectURL(e.target.files[0]));
+    } else {
+      setImageData("");
+    }
   };
 
   return (
@@ -99,16 +103,17 @@ function VidyaGrantForm({ onSubmit }) {
         <DialogContent className={classes.dialog}>
           <form onSubmit={handleSubmit}>
             <div>
-              <label htmlFor="photo">
-                <PhotoCamera />
-              </label>
-
               <input
-                id="photo"
+                id="image"
+                name="image"
                 type="file"
-                accept="image/*"
-                onChange={handlePhotoChange}
-                style={{ display: "none" }}
+                className="border p-2 w-full rounded"
+                onChange={handleImageChange}
+              />
+              <img
+                src={imageData}
+                alt="Upload"
+                className="border p-2 w-full rounded"
               />
             </div>
 
@@ -215,7 +220,7 @@ function VidyaGrantForm({ onSubmit }) {
           </form>
         </DialogContent>
       </Dialog>
-      {/* <ScholarshipDetails data={formData} /> */}
+      <ScholarshipDetails data={formData} />
     </>
   );
 }

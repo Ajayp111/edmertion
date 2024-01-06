@@ -1,6 +1,5 @@
 import React from "react";
 import { Typography, Grid, makeStyles } from "@material-ui/core";
-
 const UseStyles = makeStyles((theme) => ({
   container: {
     height: "auto",
