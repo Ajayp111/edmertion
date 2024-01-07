@@ -100,6 +100,18 @@ function Finform() {
                 placeholder="Enter the Processing Fees "
               />
             </div>
+            <div>
+              <label htmlFor="maximumLoanAmount" className="block">
+                maximumLoanAmount
+              </label>
+              <input
+                id="maximumLoanAmount"
+                name="maximumLoanAmount"
+                type="text"
+                className="border p-2 w-full rounded"
+                placeholder="Enter the MaximumLoanAmount "
+              />
+            </div>
             {/* Form submission buttons */}
             <div className="flex justify-between">
               <button

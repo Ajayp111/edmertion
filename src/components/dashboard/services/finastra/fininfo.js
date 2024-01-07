@@ -44,27 +44,39 @@ function FinInfo({ details }) {
             {/* Interest Rate */}
             <Grid item xs={12} sm={3} className={classes.item}>
               <Typography variant="h6" className={classes.item}>
-                {bankDetails.interestRate}
+                <h1>
+                  <strong>Interest Rate</strong>
+                </h1>
               </Typography>
               <Typography variant="body1" className={classes.item}>
-                {bankDetails.forMale}
+                <p>
+                  <strong>ForMale : </strong> {bankDetails.forMale}
+                </p>
               </Typography>
               <Typography variant="body1" className={classes.item}>
-                {bankDetails.forWomen}
+                <p>
+                  <strong>ForWomen :</strong> {bankDetails.forWomen}
+                </p>
               </Typography>
             </Grid>
 
             {/* Processing Fees */}
             <Grid item xs={12} sm={3} className={classes.item}>
               <Typography variant="h6" className={classes.item}>
-                {bankDetails.processingFees}
+                <p>
+                  <strong> Processing Fees : </strong>
+                  {bankDetails.processingFees}
+                </p>
               </Typography>
             </Grid>
 
             {/* Maximum Loan Amount */}
             <Grid item xs={12} sm={3} className={classes.item}>
               <Typography variant="h6" className={classes.item}>
-                {bankDetails.maximumLoanAmount}
+                <p>
+                  <strong>Maximum Loan Amount </strong>
+                  {bankDetails.maximumLoanAmount}
+                </p>
               </Typography>
             </Grid>
           </React.Fragment>

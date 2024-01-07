@@ -1,5 +1,5 @@
 import React from "react";
-import { Card, CardContent } from "@material-ui/core";
+import { Card, CardContent, Typography } from "@material-ui/core";
 
 const VidyaGrantInfo = ({ data }) => {
   return (
@@ -8,35 +8,49 @@ const VidyaGrantInfo = ({ data }) => {
         <div className="grid grid-cols-3 gap-4">
           <div className="col-span-1">
             <img
-              src={data.imageData}
+              src={data.imageUrl}
               alt="company"
               className="w-full h-full object-cover"
             />
           </div>
 
           <div className="col-span-2">
-            <h2 className="text-xl font-bold mb-2">{data.name}</h2>
+            <Typography variant="h6" component="h2" className="mb-2">
+              {data.name}
+            </Typography>
 
-            <p className="text-gray-500 mb-2">
+            <Typography variant="body2" color="textSecondary" className="mb-2">
               Organisation: {data.organisation}
-            </p>
+            </Typography>
 
-            <p className="text-gray-500 mb-2">Amount: {data.amount}</p>
+            <Typography variant="body2" color="textSecondary" className="mb-2">
+              Amount: {data.amount}
+            </Typography>
 
-            <p className="text-gray-500 mb-2">
+            <Typography variant="body2" color="textSecondary" className="mb-2">
               Eligibility: {data.eligibility}
-            </p>
+            </Typography>
 
-            <p className="text-gray-500 mb-2">
+            <Typography variant="body2" color="textSecondary" className="mb-2">
               Application Process: {data.applicationProcess}
-            </p>
+            </Typography>
 
             <div className="grid grid-cols-2 gap-4">
-              <p className="text-gray-500 mb-2">Contact: {data.contact}</p>
+              <Typography
+                variant="body2"
+                color="textSecondary"
+                className="mb-2"
+              >
+                Contact: {data.contact}
+              </Typography>
 
-              <p className="text-gray-500 mb-2">
+              <Typography
+                variant="body2"
+                color="textSecondary"
+                className="mb-2"
+              >
                 Applicable to: {data.applicableTo}
-              </p>
+              </Typography>
             </div>
           </div>
         </div>

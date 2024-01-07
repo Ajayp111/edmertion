@@ -11,7 +11,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-function CourseList({ details }) {
+function CourseList({ details, onEdit, onDelete }) {
   const classes = useStyles();
 
   return (
@@ -72,6 +72,7 @@ function CourseList({ details }) {
                     </div>
                     <div style={{ marginTop: "10px", padding: "5px" }}>
                       <Button
+                        onClick={() => onEdit(index)}
                         variant="contained"
                         color="primary"
                         size="small"
@@ -84,6 +85,7 @@ function CourseList({ details }) {
                         Edit
                       </Button>
                       <Button
+                        onClick={() => onDelete(index)}
                         variant="contained"
                         color="secondary"
                         size="small"

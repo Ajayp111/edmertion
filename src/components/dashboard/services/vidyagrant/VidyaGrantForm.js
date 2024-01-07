@@ -1,227 +1,203 @@
 import React, { useState } from "react";
 import ScholarshipDetails from "./ScholarshipDetails";
-import axios from "axios";
 
-import { makeStyles } from "@material-ui/core/styles";
+function VidyaGrantForm() {
+  const [isOpen, setIsOpen] = useState(false);
+  const [imageUrl, setImageUrl] = useState("");
+  const [courseData, setCourseData] = useState([]);
 
-import Button from "@material-ui/core/Button";
+  // Handle edit course
+  const handleEditCourse = (index) => {
+    setCourseData(
+      courseData.map((course, i) =>
+        i === index ? { ...course, edit: true } : course
+      )
+    );
+  };
 
-import Dialog from "@material-ui/core/Dialog";
-
-import DialogTitle from "@material-ui/core/DialogTitle";
-
-import DialogContent from "@material-ui/core/DialogContent";
-
-import TextField from "@material-ui/core/TextField";
-
-import { PhotoCamera } from "@material-ui/icons";
-const useStyles = makeStyles((theme) => ({
-  button: {
-    marginTop: theme.spacing(2),
-
-    marginBottom: theme.spacing(2),
-  },
-
-  dialog: {
-    minWidth: 500,
-  },
-}));
-
-function VidyaGrantForm({ onSubmit }) {
-  const classes = useStyles();
-  const [imageData, setImageData] = useState("");
-  const [open, setOpen] = useState(false);
-
-  const [formData, setFormData] = useState({
-    name: "",
-
-    organisation: "",
-
-    amount: "",
-
-    about: "",
-
-    eligibility: "",
-
-    applicationProcess: "",
-
-    contact: "",
-
-    applicableTo: "",
-  });
-  const handleChange = (e) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value,
-    });
+  // Handle delete course
+  const handleDeleteCourse = (index) => {
+    setCourseData(courseData.filter((course, i) => i !== index));
   };
   const handleSubmit = (e) => {
     e.preventDefault();
-    const scholarshipDetails = {
-      name: formData.name,
-      organisation: formData.organisation,
-      amount: formData.amount,
-      about: formData.about,
-      eligibility: formData.eligibility,
-      applicationProcess: formData.applicationProcess,
-      contact: formData.contact,
-      applicableTo: formData.applicableTo,
-      imageData: imageData,
+    const newCourse = {
+      name: e.target.name.value,
+      organisation: e.target.organisation.value,
+      about: e.target.about.value,
+      amount: e.target.amount.value,
+      applicationProcess: e.target.applicationProcess.value,
+      eligibility: e.target.eligibility.value,
+      contact: e.target.contact.value,
+      applicableTo: e.target.applicableTo.value,
+      imageUrl: imageUrl,
     };
-
-    console.log(scholarshipDetails);
-  };
-
-  const handleOpen = () => {
-    setOpen(true);
-  };
-
-  const handleClose = () => {
-    setOpen(false);
+    setCourseData([...courseData, newCourse]);
+    setImageUrl("");
+    setIsOpen(false);
   };
 
   const handleImageChange = (e) => {
     if (e.target.files.length > 0) {
-      setImageData(URL.createObjectURL(e.target.files[0]));
+      setImageUrl(URL.createObjectURL(e.target.files[0]));
     } else {
-      setImageData("");
+      setImageUrl("");
     }
+  };
+  const closeForm = () => {
+    setIsOpen(false);
   };
 
   return (
-    <>
-      <Button
-        variant="contained"
-        color="primary"
-        className={classes.button}
-        onClick={handleOpen}
-      >
-        Add
-      </Button>
-      <Dialog open={open} onClose={handleClose} maxWidth="md" fullWidth>
-        <DialogTitle>Add New Scholarship</DialogTitle>
-        <DialogContent className={classes.dialog}>
+    <div className="p-4">
+      <h2 className="text-xl font-bold mb-4">Add New Scholarship</h2>
+      {isOpen ? (
+        <div className="p-4">
           <form onSubmit={handleSubmit}>
             <div>
+              <div>
+                <input
+                  id="image"
+                  name="image"
+                  type="file"
+                  className="border p-2 w-full rounded"
+                  onChange={handleImageChange}
+                />
+                <img
+                  src={imageUrl}
+                  alt="Upload"
+                  className="border p-2 w-full rounded"
+                />
+              </div>
+              <label htmlFor="name" className="block">
+                Scholarship Name
+              </label>
               <input
-                id="image"
-                name="image"
-                type="file"
+                id="name"
+                name="name"
+                type="text"
                 className="border p-2 w-full rounded"
-                onChange={handleImageChange}
-              />
-              <img
-                src={imageData}
-                alt="Upload"
-                className="border p-2 w-full rounded"
+                placeholder="Enter Name Of the Scholarship"
               />
             </div>
 
-            <TextField
-              fullWidth
-              label="Name of the Scholarship"
-              variant="outlined"
-              margin="normal"
-              name="name"
-              required
-            />
+            <div>
+              <label htmlFor="organisation" className="block">
+                Name of the Organisation
+              </label>
+              <input
+                id="organisation"
+                name="organisation"
+                type="text"
+                className="border p-2 w-full rounded"
+                placeholder="Enter Name Of the Organisation"
+              />
+            </div>
+            <div>
+              <label htmlFor="about" className="block">
+                About
+              </label>
+              <input
+                id="about"
+                name="about"
+                type="text"
+                className="border p-2 w-full rounded"
+                placeholder="About"
+              />
+            </div>
+            <div>
+              <label htmlFor="amount" className="block">
+                Enter the Amount
+              </label>
+              <input
+                id="amount"
+                name="amount"
+                type="text"
+                className="border p-2 w-full rounded"
+                placeholder="Enter the Amount "
+              />
+            </div>
+            <div>
+              <label htmlFor="applicationProcess" className="block">
+                applicationProcess
+              </label>
+              <input
+                id="applicationProcess"
+                name="applicationProcess"
+                type="text"
+                className="border p-2 w-full rounded"
+                placeholder="applicationProcess"
+              />
+            </div>
+            <div>
+              <label htmlFor="eligibility" className="block">
+                Eligibility
+              </label>
+              <input
+                id=" eligibility"
+                name=" eligibility"
+                type="text"
+                className="border p-2 w-full rounded"
+                placeholder="Eligibility"
+              />
+            </div>
+            <div>
+              <label htmlFor="applicableTo" className="block">
+                applicableTo
+              </label>
+              <input
+                id="applicableTo"
+                name="applicableTo"
+                type="text"
+                className="border p-2 w-full rounded"
+                placeholder="applicableTo"
+              />
+            </div>
+            <div>
+              <label htmlFor="contact" className="block">
+                Contact
+              </label>
+              <input
+                id="contact"
+                name="contact"
+                type="text"
+                className="border p-2 w-full rounded"
+                placeholder="Enter the Contact"
+              />
+            </div>
 
-            <TextField
-              fullWidth
-              label="Name of the Organisation"
-              variant="outlined"
-              margin="normal"
-              name="organisation"
-              value={formData.organisation}
-              onChange={handleChange}
-              required
-            />
-            <TextField
-              fullWidth
-              label="Amount"
-              variant="outlined"
-              margin="normal"
-              name="amount"
-              value={formData.amount}
-              onChange={handleChange}
-              required
-            />
-
-            <TextField
-              fullWidth
-              label="About"
-              variant="outlined"
-              margin="normal"
-              name="about"
-              multiline
-              rows={4}
-              value={formData.about}
-              onChange={handleChange}
-              required
-            />
-
-            <TextField
-              fullWidth
-              label="Eligibility"
-              variant="outlined"
-              margin="normal"
-              name="eligibility"
-              multiline
-              rows={4}
-              value={formData.eligibility}
-              onChange={handleChange}
-              required
-            />
-
-            <TextField
-              fullWidth
-              label="Application Process"
-              variant="outlined"
-              margin="normal"
-              name="applicationProcess"
-              multiline
-              rows={4}
-              value={formData.applicationProcess}
-              onChange={handleChange}
-              required
-            />
-
-            <TextField
-              fullWidth
-              label="Contact"
-              variant="outlined"
-              margin="normal"
-              name="contact"
-              value={formData.contact}
-              onChange={handleChange}
-              required
-            />
-
-            <TextField
-              fullWidth
-              label="applicableTo"
-              variant="outlined"
-              margin="normal"
-              name="applicableTo"
-              value={formData.applicableTo}
-              onChange={handleChange}
-              required
-            />
-
-            <Button
-              fullWidth
-              type="submit"
-              variant="contained"
-              color="primary"
-              className={classes.button}
-            >
-              Publish
-            </Button>
+            {/* Form submission buttons */}
+            <div className="flex justify-between">
+              <button
+                type="submit"
+                className="bg-red-500 text-white p-2 rounded"
+              >
+                Publish
+              </button>
+              <button
+                type="button"
+                onClick={closeForm}
+                className="bg-gray-300 text-gray-700 p-2 rounded"
+              >
+                Cancel
+              </button>
+            </div>
           </form>
-        </DialogContent>
-      </Dialog>
-      <ScholarshipDetails data={formData} />
-    </>
+        </div>
+      ) : (
+        <button
+          onClick={() => setIsOpen(true)}
+          className="bg-blue-500 text-white p-2 rounded"
+        >
+          Add Course
+        </button>
+      )}
+      <ScholarshipDetails
+        details={courseData}
+        onEdit={handleEditCourse}
+        onDelete={handleDeleteCourse}
+      />
+    </div>
   );
 }
 

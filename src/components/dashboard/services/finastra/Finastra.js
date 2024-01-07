@@ -6,12 +6,12 @@ export default function Finastra() {
   return (
     <div>
       <div className=" text-black p-4 flex justify-between items-center">
-        <h1 className="text-2xl">VidyaGrant</h1>
+        <h1 className="text-2xl">FinAstra</h1>
       </div>
       <div className="w-full">
         <Search />
-        <Finbanks />
         <Finform />
+        <Finbanks />
       </div>
     </div>
   );

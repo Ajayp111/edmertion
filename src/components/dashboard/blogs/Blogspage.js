@@ -73,15 +73,15 @@ const BlogsPage = () => {
                   overflowWrap: "break-word",
                 }}
                 style={{
-                  maxHeight: "300px", // Set the maximum height to make the container scrollable
-                  overflowY: "auto", // Enable vertical scrollbar
+                  maxHeight: "300px",
+                  overflowY: "auto",
                 }}
               >
                 <div
                   style={{
-                    display: "inline-block",
-                    minWidth: "500px",
-                    marginRight: "10px",
+                    display: "flex",
+                    flexWrap: "wrap",
+                    gap: "20px",
                   }}
                 >
                   {/* comment component */}
@@ -107,7 +107,6 @@ const BlogsPage = () => {
               <AccordionSummary
                 sx={{
                   borderRadius: "8px",
-                  // border: "1px solid",
                   padding: "20px 10px",
                 }}
                 expandIcon={<ExpandMoreIcon />}

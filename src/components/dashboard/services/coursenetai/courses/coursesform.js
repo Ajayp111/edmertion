@@ -6,6 +6,19 @@ function CoursesForm() {
   const [imageUrl, setImageUrl] = useState("");
   const [courseData, setCourseData] = useState([]);
 
+  // Handle edit course
+  const handleEditCourse = (index) => {
+    setCourseData(
+      courseData.map((course, i) =>
+        i === index ? { ...course, edit: true } : course
+      )
+    );
+  };
+
+  // Handle delete course
+  const handleDeleteCourse = (index) => {
+    setCourseData(courseData.filter((course, i) => i !== index));
+  };
   const handleSubmit = (e) => {
     e.preventDefault();
     const newCourse = {
@@ -29,6 +42,7 @@ function CoursesForm() {
       setImageUrl("");
     }
   };
+
   const closeForm = () => {
     setIsOpen(false);
   };
@@ -165,7 +179,11 @@ function CoursesForm() {
           Add Course
         </button>
       )}
-      <CourseList details={courseData} />
+      <CourseList
+        details={courseData}
+        onEdit={handleEditCourse}
+        onDelete={handleDeleteCourse}
+      />
     </div>
   );
 }

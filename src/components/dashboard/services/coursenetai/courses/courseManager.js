@@ -7,9 +7,9 @@ function CourseManager() {
 
   const handleEdit = () => {};
 
-  const handleDelete = () => {
-    setCourseDetails([]);
-  };
+  // const handleDelete = () => {
+  //   setCourseDetails([]);
+  // };
 
   return (
     <div>
@@ -17,9 +17,9 @@ function CourseManager() {
 
       {courseDetails.length > 0 && (
         <CourseList
-          details={courseDetails}
-          onEdit={handleEdit}
-          onDelete={handleDelete}
+        // details={courseDetails}
+        // onEdit={handleEditCourse}
+        // onDelete={handleDeleteCourse}
         />
       )}
     </div>
