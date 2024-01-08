@@ -5,7 +5,7 @@ import BlogsBannerHome from "./banners/Blogsbanners/Blogsbannerhome";
 
 function Home() {
   const borderedComponentStyle = {
-    border: "1px solid #000",
+    // border: "1px solid #000",
     padding: "10px",
     marginBottom: "20px",
   };

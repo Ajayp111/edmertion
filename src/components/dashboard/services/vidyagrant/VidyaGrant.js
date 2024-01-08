@@ -2,6 +2,8 @@ import React from "react";
 import SearchComponent from "./Search";
 import VidyaGrantForm from "./VidyaGrantForm";
 import Vidyadummy from "./vidyadummy";
+import ScholarshipDetails from "./ScholarshipDetails";
+import AddNewComponent from "../AddNewComponent";
 export default function VidyaGrant() {
   return (
     <div>
@@ -12,9 +14,9 @@ export default function VidyaGrant() {
       <div className="w-full">
         <SearchComponent />
       </div>
-
       <div>
         <VidyaGrantForm />
+        {/* <ScholarshipDetails /> */}
       </div>
       <div>
         <Vidyadummy />

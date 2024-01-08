@@ -1,9 +1,31 @@
-import React from "react";
+import React, { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBell } from "@fortawesome/free-solid-svg-icons"; // Import the bell icon from Font Awesome
+import { useLocation, Link } from "react-router-dom"; // Changed from useNavigate to useLocation and using Link from react-router-dom
 import { useNavigate } from "react-router-dom";
 import Users from "../userspage/Users";
+import { makeStyles } from "@material-ui/core/styles";
+
+const useStyles = makeStyles((theme) => ({
+  listItem: {
+    "&:hover": {
+      backgroundColor: "#e0e0e0",
+    },
+  },
+  activeLink: {
+    fontWeight: "bold",
+    color: "blue",
+  },
+}));
+
 const Navbar = () => {
+  const [activePage, setActivePage] = useState("/users");
+  const classes = useStyles();
+  const location = useLocation();
+  const isActive = (path) => {
+    return location.pathname === path ? classes.activeLink : "";
+  };
+
   const navigate = useNavigate();
   const goToUsersPage = () => {
     navigate("/users");
@@ -24,62 +46,75 @@ const Navbar = () => {
         </div>
         <ul className="flex flex-wrap justify-center md:justify-end space-x-4">
           <li>
-            <a
-              href="/users"
-              className="hover:text-gray-800 hover:underline text-lg"
+            <Link
+              to="/users"
+              className={`hover:text-gray-800 hover:underline text-lg ${isActive(
+                "/users"
+              )}`}
             >
               Users
-            </a>
+            </Link>
           </li>
           {/* { isAdmin && ( */}
           <li>
-            <a
-              href="admin/dashboard"
-              className="hover:text-gray-800 hover:underline text-lg"
+            <Link
+              to="admin/dashboard"
+              className={`hover:text-gray-800 hover:underline text-lg ${isActive(
+                "/admin/dashboard"
+              )}`}
             >
               Dashboard
-            </a>
+            </Link>
           </li>
-          {/* )} */}
           <li>
-            <a
-              href="/analytics"
-              className="hover:text-gray-800 hover:underline text-lg"
+            <Link
+              to="/analytics"
+              className={`hover:text-gray-800 hover:underline text-lg ${isActive(
+                "/analytics"
+              )}`}
             >
               Analytics
-            </a>
+            </Link>
           </li>
           <li>
-            <a
-              href="/approvals"
-              className="hover:text-gray-800 hover:underline text-lg"
+            <Link
+              to="/approvals"
+              className={`hover:text-gray-800 hover:underline text-lg ${isActive(
+                "/approvals"
+              )}`}
             >
               Approvals
-            </a>
+            </Link>
           </li>
           <li>
-            <a
-              href="/logout"
-              className="hover:text-gray-800 hover:underline text-lg"
+            <Link
+              to="/logout"
+              className={`hover:text-gray-800 hover:underline text-lg ${isActive(
+                "/logout"
+              )}`}
             >
               Logout
-            </a>
+            </Link>
           </li>
           <li>
-            <a
-              href="/notifications"
-              className="hover:text-gray-800 hover:underline text-lg"
+            <Link
+              to="/notifications"
+              className={`hover:text-gray-800 hover:underline text-lg ${isActive(
+                "/notification"
+              )}`}
             >
               <FontAwesomeIcon icon={faBell} />
-            </a>
+            </Link>
           </li>
           <li className="">
-            <a
-              href="/profile"
-              className="hover:text-gray-800 hover:underline text-lg"
+            <Link
+              to="/profile"
+              className={`hover:text-gray-800 hover:underline text-lg ${isActive(
+                "/profile"
+              )}`}
             >
               Profile
-            </a>
+            </Link>
           </li>
         </ul>
       </div>

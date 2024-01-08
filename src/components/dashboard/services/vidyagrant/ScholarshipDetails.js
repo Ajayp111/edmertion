@@ -1,41 +1,105 @@
 import React from "react";
-import { Card, CardContent } from "@material-ui/core";
+import { Card, Button, Grid, IconButton, makeStyles } from "@material-ui/core";
 
-function ScholarshipDetails({ data }) {
+const useStyles = makeStyles((theme) => ({
+  card: {
+    height: "100%",
+    width: "100%",
+    [theme.breakpoints.up("sm")]: {
+      height: "225px",
+    },
+  },
+  img: {
+    width: "100%",
+    height: "100%",
+    objectFit: "cover",
+    maxHeight: "225px",
+  },
+  buttonGroup: {
+    marginTop: "15px",
+    display: "flex",
+  },
+  button: {
+    marginTop: "15px",
+    marginLeft: "5px",
+  },
+}));
+
+const ScholarshipDetails = ({ details, onEdit, onDelete }) => {
+  const classes = useStyles();
+
   return (
-    <Card>
-      <CardContent>
-        <div className="grid grid-cols-3 gap-4">
-          <div className="col-span-1">
-            <img
-              src={data.photo}
-              alt="company"
-              className="w-full h-full object-cover"
-            />
-          </div>
-          <div className="col-span-2">
-            <h2 className="text-xl font-bold mb-2">{data.name}</h2>
-            <p className="text-gray-500 mb-2">
-              Organisation: {data.organisation}
-            </p>
-            <p className="text-gray-500 mb-2">Amount: {data.amount}</p>
-            <p className="text-gray-500 mb-2">
-              Eligibility: {data.eligibility}
-            </p>
-            <p className="text-gray-500 mb-2">
-              Application Process: {data.applicationProcess}
-            </p>
-            <div className="grid grid-cols-2 gap-4">
-              <p className="text-gray-500 mb-2">Contact: {data.contact}</p>
-              <p className="text-gray-500 mb-2">
-                Applicable to: {data.applicableTo}
-              </p>
-            </div>
-          </div>
-        </div>
-      </CardContent>
-    </Card>
+    <div style={{ padding: "10px" }}>
+      <Grid container spacing={2}>
+        {details.map((detail, index) => (
+          <Grid item xs={12} key={index}>
+            <Card className={classes.card}>
+              <Grid container spacing={3}>
+                <Grid item xs={12} sm={4}>
+                  {detail.imageUrl && (
+                    <img
+                      src={detail.imageUrl}
+                      alt="Scholarship Photo"
+                      className={classes.img}
+                    />
+                  )}
+                </Grid>
+                <Grid item xs={12} sm={4}>
+                  <Grid container direction="column">
+                    <h3 style={{ fontWeight: "bold", fontSize: "1.5rem" }}>
+                      {detail.scholarshipname}
+                    </h3>
+                    <p>
+                      <strong>Organisation:</strong> {detail.organisation}
+                    </p>
+                    <p>
+                      <strong>Eligibility:</strong> {detail.eligibility}
+                    </p>
+                    <p>
+                      <strong>Based:</strong>
+                      {detail.based}
+                    </p>
+                  </Grid>
+                </Grid>
+                <Grid item xs={12} sm={4}>
+                  <Grid container direction="column">
+                    <div style={{ display: "flex", alignItems: "center" }}>
+                      <p>
+                        <strong className="text-xl px-2">
+                          {detail.amount}{" "}
+                        </strong>
+                      </p>
+                      <IconButton aria-label="delete"></IconButton>
+                    </div>
+                    <div className={classes.buttonGroup}>
+                      <Button
+                        variant="contained"
+                        color="primary"
+                        size="small"
+                        className={classes.button}
+                        onClick={() => onEdit(index)}
+                      >
+                        Edit
+                      </Button>
+                      <Button
+                        variant="contained"
+                        color="secondary"
+                        size="small"
+                        className={classes.button}
+                        onClick={() => onDelete(index)}
+                      >
+                        Delete
+                      </Button>
+                    </div>
+                  </Grid>
+                </Grid>
+              </Grid>
+            </Card>
+          </Grid>
+        ))}
+      </Grid>
+    </div>
   );
-}
+};
 
 export default ScholarshipDetails;

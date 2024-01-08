@@ -1,204 +1,105 @@
-import React, { useState } from "react";
-import ScholarshipDetails from "./ScholarshipDetails";
+import React from "react";
+import { Card, Button, Grid, IconButton, makeStyles } from "@material-ui/core";
 
-function VidyaGrantForm() {
-  const [isOpen, setIsOpen] = useState(false);
-  const [imageUrl, setImageUrl] = useState("");
-  const [courseData, setCourseData] = useState([]);
+const useStyles = makeStyles((theme) => ({
+  card: {
+    height: "100%",
+    width: "100%",
+    [theme.breakpoints.up("sm")]: {
+      height: "225px",
+    },
+  },
+  img: {
+    width: "100%",
+    height: "100%",
+    objectFit: "cover",
+    maxHeight: "225px",
+  },
+  buttonGroup: {
+    marginTop: "15px",
+    display: "flex",
+  },
+  button: {
+    marginTop: "15px",
+    marginLeft: "5px",
+  },
+}));
 
-  // Handle edit course
-  const handleEditCourse = (index) => {
-    setCourseData(
-      courseData.map((course, i) =>
-        i === index ? { ...course, edit: true } : course
-      )
-    );
-  };
-
-  // Handle delete course
-  const handleDeleteCourse = (index) => {
-    setCourseData(courseData.filter((course, i) => i !== index));
-  };
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    const newCourse = {
-      name: e.target.name.value,
-      organisation: e.target.organisation.value,
-      about: e.target.about.value,
-      amount: e.target.amount.value,
-      applicationProcess: e.target.applicationProcess.value,
-      eligibility: e.target.eligibility.value,
-      contact: e.target.contact.value,
-      applicableTo: e.target.applicableTo.value,
-      imageUrl: imageUrl,
-    };
-    setCourseData([...courseData, newCourse]);
-    setIsOpen(false);
-  };
-
-  const handleImageChange = (e) => {
-    if (e.target.files.length > 0) {
-      setImageUrl(URL.createObjectURL(e.target.files[0]));
-    } else {
-      setImageUrl("");
-    }
-  };
-
-  const closeForm = () => {
-    setIsOpen(false);
-  };
+const ScholarshipDetails = ({ details, onEdit, onDelete }) => {
+  const classes = useStyles();
 
   return (
-    <div className="p-4">
-      <h2 className="text-xl font-bold mb-4">Add New Scholarship</h2>
-      {isOpen ? (
-        <div className="p-4">
-          <form onSubmit={handleSubmit}>
-            <div>
-              <div>
-                <input
-                  id="image"
-                  name="image"
-                  type="file"
-                  className="border p-2 w-full rounded"
-                  onChange={handleImageChange}
-                />
-                <img
-                  src={imageUrl}
-                  alt="Upload"
-                  className="border p-2 w-full rounded"
-                />
-              </div>
-              <label htmlFor="name" className="block">
-                Scholarship Name
-              </label>
-              <input
-                id="name"
-                name="name"
-                type="text"
-                className="border p-2 w-full rounded"
-                placeholder="Enter Name Of the Scholarship"
-              />
-            </div>
-
-            <div>
-              <label htmlFor="organisation" className="block">
-                Name of the Organisation
-              </label>
-              <input
-                id="organisation"
-                name="organisation"
-                type="text"
-                className="border p-2 w-full rounded"
-                placeholder="Enter Name Of the Organisation"
-              />
-            </div>
-            <div>
-              <label htmlFor="about" className="block">
-                About
-              </label>
-              <input
-                id="about"
-                name="about"
-                type="text"
-                className="border p-2 w-full rounded"
-                placeholder="About"
-              />
-            </div>
-            <div>
-              <label htmlFor="amount" className="block">
-                Enter the Amount
-              </label>
-              <input
-                id="amount"
-                name="amount"
-                type="text"
-                className="border p-2 w-full rounded"
-                placeholder="Enter the Amount "
-              />
-            </div>
-            <div>
-              <label htmlFor="applicationProcess" className="block">
-                applicationProcess
-              </label>
-              <input
-                id="applicationProcess"
-                name="applicationProcess"
-                type="text"
-                className="border p-2 w-full rounded"
-                placeholder="applicationProcess"
-              />
-            </div>
-            <div>
-              <label htmlFor=" eligibility" className="block">
-                Eligibility
-              </label>
-              <input
-                id=" eligibility"
-                name=" eligibility"
-                type="text"
-                className="border p-2 w-full rounded"
-                placeholder="Eligibility"
-              />
-            </div>
-            <div>
-              <label htmlFor="applicableTo" className="block">
-                applicableTo
-              </label>
-              <input
-                id="applicableTo"
-                name="applicableTo"
-                type="text"
-                className="border p-2 w-full rounded"
-                placeholder="applicableTo"
-              />
-            </div>
-            <div>
-              <label htmlFor="contact" className="block">
-                Contact
-              </label>
-              <input
-                id="contact"
-                name="contact"
-                type="text"
-                className="border p-2 w-full rounded"
-                placeholder="Enter the Contact"
-              />
-            </div>
-
-            {/* Form submission buttons */}
-            <div className="flex justify-between">
-              <button
-                type="submit"
-                className="bg-red-500 text-white p-2 rounded"
-              >
-                Publish
-              </button>
-              <button
-                type="button"
-                onClick={closeForm}
-                className="bg-gray-300 text-gray-700 p-2 rounded"
-              >
-                Cancel
-              </button>
-            </div>
-          </form>
-        </div>
-      ) : (
-        <button
-          onClick={() => setIsOpen(true)}
-          className="bg-blue-500 text-white p-2 rounded"
-        >
-          Add Course
-        </button>
-      )}
-      <ScholarshipDetails
-        details={courseData}
-        onEdit={handleEditCourse}
-        onDelete={handleDeleteCourse}
-      />
+    <div style={{ padding: "10px" }}>
+      <Grid container spacing={2}>
+        {details.map((detail, index) => (
+          <Grid item xs={12} key={index}>
+            <Card className={classes.card}>
+              <Grid container spacing={3}>
+                <Grid item xs={12} sm={4}>
+                  {detail.imageUrl && (
+                    <img
+                      src={detail.imageUrl}
+                      alt="Scholarship Photo"
+                      className={classes.img}
+                    />
+                  )}
+                </Grid>
+                <Grid item xs={12} sm={4}>
+                  <Grid container direction="column">
+                    <h3 style={{ fontWeight: "bold", fontSize: "1.5rem" }}>
+                      {detail.scholarshipname}
+                    </h3>
+                    <p>
+                      <strong>Organisation:</strong> {detail.organisation}
+                    </p>
+                    <p>
+                      <strong>Eligibility:</strong> {detail.eligibility}
+                    </p>
+                    <p>
+                      <strong>Based:</strong>
+                      {detail.based}
+                    </p>
+                  </Grid>
+                </Grid>
+                <Grid item xs={12} sm={4}>
+                  <Grid container direction="column">
+                    <div style={{ display: "flex", alignItems: "center" }}>
+                      <p>
+                        <strong className="text-xl px-2">
+                          {detail.amount}{" "}
+                        </strong>
+                      </p>
+                      <IconButton aria-label="delete"></IconButton>
+                    </div>
+                    <div className={classes.buttonGroup}>
+                      <Button
+                        variant="contained"
+                        color="primary"
+                        size="small"
+                        className={classes.button}
+                        onClick={() => onEdit(index)}
+                      >
+                        Edit
+                      </Button>
+                      <Button
+                        variant="contained"
+                        color="secondary"
+                        size="small"
+                        className={classes.button}
+                        onClick={() => onDelete(index)}
+                      >
+                        Delete
+                      </Button>
+                    </div>
+                  </Grid>
+                </Grid>
+              </Grid>
+            </Card>
+          </Grid>
+        ))}
+      </Grid>
     </div>
   );
-}
+};
 
-export default VidyaGrantForm;
+export default ScholarshipDetails;

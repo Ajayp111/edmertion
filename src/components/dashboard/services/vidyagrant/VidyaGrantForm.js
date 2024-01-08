@@ -10,7 +10,7 @@ function VidyaGrantForm() {
   const handleEditCourse = (index) => {
     setCourseData(
       courseData.map((course, i) =>
-        i === index ? { ...course, edit: true } : course
+        i === index ? { ...courseData, edit: true } : courseData
       )
     );
   };
@@ -21,19 +21,23 @@ function VidyaGrantForm() {
   };
   const handleSubmit = (e) => {
     e.preventDefault();
+
+    const formData = new FormData(e.target);
     const newCourse = {
-      name: e.target.name.value,
-      organisation: e.target.organisation.value,
-      about: e.target.about.value,
-      amount: e.target.amount.value,
-      applicationProcess: e.target.applicationProcess.value,
-      eligibility: e.target.eligibility.value,
-      contact: e.target.contact.value,
-      applicableTo: e.target.applicableTo.value,
-      imageUrl: imageUrl,
+      scholarshipname: formData.get("scholarshipname") || "",
+      organisation: formData.get("organisation") || "",
+      about: formData.get("about") || "",
+      amount: formData.get("amount") || "",
+      applicationProcess: formData.get("applicationProcess") || "",
+      eligibility: formData.get("eligibility") || "",
+      based: formData.get("based") || "",
+      contact: formData.get("contact") || "",
+      applicableTo: formData.get("applicableTo") || "",
+      imageUrl: imageUrl || "",
     };
+
     setCourseData([...courseData, newCourse]);
-    setImageUrl("");
+    // setImageUrl("");
     setIsOpen(false);
   };
 
@@ -130,6 +134,18 @@ function VidyaGrantForm() {
               />
             </div>
             <div>
+              <label htmlFor="based" className="block">
+                Based
+              </label>
+              <input
+                id="based"
+                name="based"
+                type="text"
+                className="border p-2 w-full rounded"
+                placeholder="Based"
+              />
+            </div>
+            <div>
               <label htmlFor="eligibility" className="block">
                 Eligibility
               </label>
@@ -185,12 +201,21 @@ function VidyaGrantForm() {
           </form>
         </div>
       ) : (
-        <button
-          onClick={() => setIsOpen(true)}
-          className="bg-blue-500 text-white p-2 rounded"
-        >
-          Add Course
-        </button>
+        <div className="border-4 border-dashed border-gray-200 w-200 h-200 p-20">
+          <div className="h-full w-full flex items-center justify-center">
+            <div>
+              <button
+                className="w-48 rounded-lg py-4 px-8 font-bold text-xl bg-gray-500 text-white hover:bg-red-400 transition-colors duration-300"
+                onClick={() => setIsOpen(true)}
+              >
+                Add New
+              </button>
+              <div className="text-gray-500 py-1 px-2">
+                <span>Upload files in jpg format</span>
+              </div>
+            </div>
+          </div>
+        </div>
       )}
       <ScholarshipDetails
         details={courseData}
@@ -198,6 +223,7 @@ function VidyaGrantForm() {
         onDelete={handleDeleteCourse}
       />
     </div>
+    //
   );
 }
 

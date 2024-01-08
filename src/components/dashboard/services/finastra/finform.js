@@ -131,12 +131,21 @@ function Finform() {
           </form>
         </div>
       ) : (
-        <button
-          onClick={() => setIsOpen(true)}
-          className="bg-blue-500 text-white p-2 rounded"
-        >
-          Add Course
-        </button>
+        <div className="border-4 border-dashed border-gray-200 w-200 h-200 p-20">
+          <div className="h-full w-full flex items-center justify-center">
+            <div>
+              <button
+                className="w-48 rounded-lg py-4 px-8 font-bold text-xl bg-gray-500 text-white hover:bg-red-400 transition-colors duration-300"
+                onClick={() => setIsOpen(true)}
+              >
+                Add New
+              </button>
+              <div className="text-gray-500 py-1 px-2">
+                <span>Upload files in jpg format</span>
+              </div>
+            </div>
+          </div>
+        </div>
       )}
       <Fininfo details={bankData} />
     </div>
