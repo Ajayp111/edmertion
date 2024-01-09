@@ -5,7 +5,6 @@ import AccordionSummary from "@mui/material/AccordionSummary";
 import Typography from "@mui/material/Typography";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import ReviewComments from "./ReviewComments";
-import { Card, Button } from "react-bootstrap";
 
 const BlogsPage = () => {
   const [expanded, setExpanded] = React.useState(false);
@@ -14,201 +13,144 @@ const BlogsPage = () => {
     setExpanded(isExpanded ? panel : false);
   };
 
+  const renderReviewComments = (count) => {
+    const comments = [];
+    for (let i = 0; i < count; i++) {
+      comments.push(<ReviewComments key={i} />);
+    }
+    return comments;
+  };
+
   return (
     <div className="container mt-8">
-      <div className=" overflow-hidden max-w-full py-3 ml-4  ">
-        <h1 className="py-8 text-2xl font-bold underline underline-offset-8 text-Black-400 text-wrap overflow-y-hidden ">
+      <div className="ml-4">
+        <h1 className="text-2xl font-bold underline underline-offset-8 text-black-400">
           Blogs Page
         </h1>
         <div>
-          <h1 className="font-inter text-24 font-bold leading-24 tracking-normal text-left">
-            Comments :
-          </h1>
-          <h3 className="font-inter text-base font-semibold leading-6 text-left py-3">
-            Review Comments :
-          </h3>
-          <div className="border-solid  border-2  border-black-100  ">
-            <Accordion
-              className="mb-4"
-              sx={{
-                padding: "20px",
-              }}
-              expanded={expanded === "panel1"}
-              onChange={handleChange("panel1")}
-            >
-              <AccordionSummary
-                sx={{
-                  // borderRadius: "8px",
-                  // border: "1px solid",
-                  padding: "20px 10px",
-                }}
-                expandIcon={<ExpandMoreIcon />}
-                aria-controls="panel1bh-content"
-                id="panel1bh-header"
-              >
-                <Typography
-                  sx={{
-                    fontFamily: "inter",
-                    fontWeight: "500",
-                    fontSize: "1.1rem",
-                    // lineHeight: "24px",
-                    display: "flex",
-                    flexDirection: "column",
-                    overflowWrap: "break-word",
-                  }}
-                >
-                  How the Current economic situation affects our jobs How the
-                  Current economic situation affects our jobs
-                </Typography>
-              </AccordionSummary>
-              <AccordionDetails
-                sx={{
-                  overflowY: "hidden",
-                  maxHeight: "300px",
-                  overflowY: "auto",
-                  display: "flex",
-                  flexDirection: "column",
-                  gap: "10px",
-                  maxWidth: "100%",
-                  overflowWrap: "break-word",
-                }}
-                style={{
-                  maxHeight: "300px",
-                  overflowY: "auto",
-                }}
-              >
-                <div
-                  style={{
-                    display: "flex",
-                    flexWrap: "wrap",
-                    gap: "20px",
-                  }}
-                >
-                  {/* comment component */}
-                  <ReviewComments />
-                  <ReviewComments />
-                  <ReviewComments />
-                  <ReviewComments />
-                  <ReviewComments />
-                  <ReviewComments />
-                  <ReviewComments />
-                  <ReviewComments />
-                  <ReviewComments />
-                </div>
-              </AccordionDetails>
-            </Accordion>
-            <Accordion
-              sx={{
-                padding: "20px",
-              }}
-              expanded={expanded === "panel2"}
-              onChange={handleChange("panel2")}
-            >
-              <AccordionSummary
-                sx={{
-                  borderRadius: "8px",
-                  padding: "20px 10px",
-                }}
-                expandIcon={<ExpandMoreIcon />}
-                aria-controls="panel2bh-content"
-                id="panel2bh-header"
-              >
-                <Typography
-                  sx={{
-                    fontFamily: "inter",
-                    flexShrink: 0,
-                    fontWeight: "500",
-                    fontSize: "1.1rem",
-                    lineHeight: "24px",
-                  }}
-                >
-                  Dummy Blog Title
-                </Typography>
-              </AccordionSummary>
-              <AccordionDetails
-                sx={{
-                  overflowY: "hidden",
-                  maxHeight: "300px",
-                  overflowY: "auto",
-                  display: "flex",
-                  flexDirection: "column",
-                  gap: "10px",
-                  maxWidth: "100%",
-                  overflowWrap: "break-word",
-                }}
-                style={{
-                  maxHeight: "300px", // Set the maximum height to make the container scrollable
-                  overflowY: "auto", // Enable vertical scrollbar
-                }}
-              >
-                <div style={{ display: "flex", flexWrap: "wrap", gap: "10px" }}>
-                  {/* comment components */}
-                  <ReviewComments />
-                  <ReviewComments />
-                  <ReviewComments />
-                  <ReviewComments />
-                  <ReviewComments />
-                  <ReviewComments />
-                </div>
-              </AccordionDetails>
-            </Accordion>
+          <h1 className="font-bold text-2xl mt-8 mb-4">Comments :</h1>
 
-            <Accordion
-              sx={{
-                padding: "20px",
-              }}
-              expanded={expanded === "panel4"}
-              onChange={handleChange("panel4")}
+          <Accordion
+            sx={{ padding: "20px" }}
+            expanded={expanded === "panel1"}
+            onChange={handleChange("panel1")}
+          >
+            <AccordionSummary
+              expandIcon={<ExpandMoreIcon />}
+              aria-controls="panel1bh-content"
+              id="panel1bh-header"
             >
-              <AccordionSummary
-                sx={{
-                  // borderRadius: "8px",
-                  // border: "1px solid",
-                  padding: "20px 10px",
-                }}
-                expandIcon={<ExpandMoreIcon />}
-                aria-controls="panel4bh-content"
-                id="panel4bh-header"
-              >
-                <Typography
-                  sx={{
-                    fontFamily: "inter",
-                    flexShrink: 0,
-                    fontWeight: "500",
-                    fontSize: "1.1rem",
-                    lineHeight: "24px",
-                  }}
-                >
-                  Dummy Blog Title
-                </Typography>
-              </AccordionSummary>
-              <AccordionDetails
-                sx={{
-                  overflowY: "hidden",
-                  maxHeight: "300px",
-                  overflowY: "auto",
-                  display: "flex",
-                  flexDirection: "column",
-                  gap: "10px",
-                  maxWidth: "100%",
-                  overflowWrap: "break-word",
-                }}
-                style={{
-                  maxHeight: "300px",
-                  overflowY: "auto",
-                  display: "flex",
-                  flexWrap: "wrap",
-                  gap: "10px",
-                  maxWidth: "100%",
-                }}
-              >
-                <div style={{ display: "flex", flexWrap: "wrap", gap: "10px" }}>
-                  {/* comment component */}
-                  <ReviewComments />
-                </div>
-              </AccordionDetails>
-            </Accordion>
-          </div>
+              <Typography variant="h6">Blog 1</Typography>
+            </AccordionSummary>
+            <AccordionDetails
+              sx={{
+                display: "flex",
+                flexDirection: "column",
+                gap: "10px",
+                maxHeight: "300px",
+                overflowY: "auto",
+              }}
+            >
+              {renderReviewComments(5)}
+            </AccordionDetails>
+          </Accordion>
+          {/* Accordion for Blog Title 2 */}
+          <Accordion
+            sx={{ padding: "20px" }}
+            expanded={expanded === "panel2"}
+            onChange={handleChange("panel2")}
+          >
+            <AccordionSummary
+              expandIcon={<ExpandMoreIcon />}
+              aria-controls="panel2bh-content"
+              id="panel2bh-header"
+            >
+              <Typography variant="h6">Blog 2</Typography>
+            </AccordionSummary>
+            <AccordionDetails
+              sx={{
+                display: "flex",
+                flexDirection: "column",
+                gap: "10px",
+                maxHeight: "300px",
+                overflowY: "auto",
+              }}
+            >
+              {renderReviewComments(10)}
+            </AccordionDetails>
+          </Accordion>
+          <Accordion
+            sx={{ padding: "20px" }}
+            expanded={expanded === "panel3"}
+            onChange={handleChange("panel3")}
+          >
+            <AccordionSummary
+              expandIcon={<ExpandMoreIcon />}
+              aria-controls="panel2bh-content"
+              id="panel2bh-header"
+            >
+              <Typography variant="h6">Blog 3</Typography>
+            </AccordionSummary>
+            <AccordionDetails
+              sx={{
+                display: "flex",
+                flexDirection: "column",
+                gap: "10px",
+                maxHeight: "300px",
+                overflowY: "auto",
+              }}
+            >
+              {renderReviewComments(3)}
+            </AccordionDetails>
+          </Accordion>
+          <Accordion
+            sx={{ padding: "20px" }}
+            expanded={expanded === "panel4"}
+            onChange={handleChange("panel4")}
+          >
+            <AccordionSummary
+              expandIcon={<ExpandMoreIcon />}
+              aria-controls="panel2bh-content"
+              id="panel2bh-header"
+            >
+              <Typography variant="h6">Blog 4</Typography>
+            </AccordionSummary>
+            <AccordionDetails
+              sx={{
+                display: "flex",
+                flexDirection: "column",
+                gap: "10px",
+                maxHeight: "300px",
+                overflowY: "auto",
+              }}
+            >
+              {renderReviewComments(3)}
+            </AccordionDetails>
+          </Accordion>
+          <Accordion
+            sx={{ padding: "20px" }}
+            expanded={expanded === "panel5"}
+            onChange={handleChange("panel5")}
+          >
+            <AccordionSummary
+              expandIcon={<ExpandMoreIcon />}
+              aria-controls="panel2bh-content"
+              id="panel2bh-header"
+            >
+              <Typography variant="h6">Blog 5</Typography>
+            </AccordionSummary>
+            <AccordionDetails
+              sx={{
+                display: "flex",
+                flexDirection: "column",
+                gap: "10px",
+                maxHeight: "300px",
+                overflowY: "auto",
+              }}
+            >
+              {renderReviewComments(3)}
+            </AccordionDetails>
+          </Accordion>
         </div>
       </div>
     </div>

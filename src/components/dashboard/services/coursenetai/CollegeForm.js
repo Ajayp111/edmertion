@@ -53,12 +53,21 @@ const AddCollegeForm = ({ setUniversityDetails }) => {
   return (
     <div className="flex justify-center items-center mt-7 lg:mr-20">
       {!isOpen && (
-        <button
-          onClick={openForm}
-          className="bg-gray-500 text-xl text-white p-6 m-8  rounded border border-black mt-20 mb-20 "
-        >
-          Add College
-        </button>
+        <div>
+          <div className="h-full w-full flex items-center justify-center">
+            <div>
+              <button
+                className="w-48 rounded-lg py-4 px-8 font-bold text-xl bg-gray-500 text-white hover:bg-red-400 transition-colors duration-300"
+                onClick={openForm}
+              >
+                Add New
+              </button>
+              <div className="text-gray-500 py-1 px-2">
+                <span>Upload files in jpg format</span>
+              </div>
+            </div>
+          </div>
+        </div>
       )}
 
       {isOpen && (
