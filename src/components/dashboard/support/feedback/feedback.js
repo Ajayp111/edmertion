@@ -28,7 +28,10 @@ function Feedback() {
   };
 
   return (
-    <div className="container mx-auto py-5 pr-10">
+    <div
+      className="container mx-auto py-5 pr-10"
+      style={{ userSelect: "none" }}
+    >
       <div>
         <h1 className="text-xl font-bold size-5 pb-8 pl-5 underline">
           Feedback

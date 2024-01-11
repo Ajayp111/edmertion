@@ -17,7 +17,10 @@ const ServicesPage = () => {
   };
 
   return (
-    <Box sx={{ width: "100%", typography: "body1" }}>
+    <Box
+      sx={{ width: "100%", typography: "body1" }}
+      style={{ userSelect: "none" }}
+    >
       <TabContext value={value}>
         <Box sx={{ borderBottom: 2, borderColor: "divider" }}>
           <TabList onChange={handleChange} sx={{ marginBottom: 2 }}>

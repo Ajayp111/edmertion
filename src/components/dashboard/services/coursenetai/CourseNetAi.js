@@ -9,12 +9,16 @@ function CourseNetAi() {
 
   return (
     <div>
-      <div className="text-black p-4 flex justify-between items-center">
+      <div
+        className="text-black p-4 flex justify-between items-center"
+        style={{ userSelect: "none" }}
+      >
         <h1 className="text-2xl">CourseNet AI</h1>
         <div>
           <button
-            className="bg-red-400 text-white rounded-md px-4 py-2 mr-2"
+            className=" text-white rounded-md px-4 py-2 mr-2"
             onClick={() => setIsCollegeView(true)}
+            style={{ background: "#ff6347" }}
           >
             Colleges
           </button>

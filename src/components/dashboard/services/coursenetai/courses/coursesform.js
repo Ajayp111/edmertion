@@ -48,11 +48,11 @@ function CoursesForm() {
   };
 
   return (
-    <div className="p-4">
+    <div className="p-4" style={{ userSelect: "none" }}>
       <h2 className="text-xl font-bold mb-4">Add Course</h2>
       {isOpen ? (
-        <div className="p-4">
-          <form onSubmit={handleSubmit}>
+        <div className="p-4" style={{ userSelect: "none" }}>
+          <form onSubmit={handleSubmit} style={{ userSelect: "none" }}>
             <div>
               <label htmlFor="courseName" className="block">
                 Course Name

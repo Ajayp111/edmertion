@@ -9,7 +9,11 @@ function AllBanners({ banners }) {
           return null;
         }
         return (
-          <Box key={index} className="p-4 border rounded-md m-5">
+          <Box
+            key={index}
+            className="p-4 border rounded-md m-5"
+            style={{ userSelect: "none" }}
+          >
             <Typography variant="h6">{banner.name}</Typography>
             <img
               src={banner.url}

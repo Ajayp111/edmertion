@@ -5,6 +5,17 @@ import AccordionSummary from "@mui/material/AccordionSummary";
 import Typography from "@mui/material/Typography";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import ReviewComments from "./ReviewComments";
+import Badge from "@mui/material/Badge";
+import { styled } from "@mui/system";
+// Styling the dot
+const StyledBadge = styled(Badge)(({ theme }) => ({
+  "& .MuiBadge-badge": {
+    backgroundColor: "#ff6347",
+    width: "5px",
+    height: "5px",
+    borderRadius: "50%",
+  },
+}));
 
 const BlogsPage = () => {
   const [expanded, setExpanded] = React.useState(false);
@@ -12,11 +23,30 @@ const BlogsPage = () => {
   const handleChange = (panel) => (event, isExpanded) => {
     setExpanded(isExpanded ? panel : false);
   };
-
   const renderReviewComments = (count) => {
     const comments = [];
     for (let i = 0; i < count; i++) {
-      comments.push(<ReviewComments key={i} />);
+      comments.push(
+        <div key={i} style={{ display: "flex", alignItems: "center" }}>
+          <div
+            style={{
+              width: "12px",
+              height: "10px",
+              backgroundColor: "#ff6347",
+              borderRadius: "50%",
+              marginRight: "12px",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              color: "white",
+              fontWeight: "bold",
+              fontSize: "14px",
+              paddingRight: "5px",
+            }}
+          ></div>
+          <ReviewComments />
+        </div>
+      );
     }
     return comments;
   };
@@ -24,11 +54,20 @@ const BlogsPage = () => {
   return (
     <div className="container mt-8">
       <div className="ml-4">
-        <h1 className="text-2xl font-bold underline underline-offset-8 text-black-400">
+        <h1
+          className="text-2xl font-bold underline underline-offset-8 text-black-400"
+          style={{ userSelect: "none" }}
+        >
           Blogs Page
         </h1>
         <div>
-          <h1 className="font-bold text-2xl mt-8 mb-4">Comments :</h1>
+          <h1
+            className="font-bold text-2xl mt-8 mb-4"
+            style={{ userSelect: "none" }}
+          >
+            {" "}
+            Review Comments :
+          </h1>
 
           <Accordion
             sx={{ padding: "20px" }}

@@ -42,6 +42,7 @@ const dummycoursenetai = () => {
         overflowX: "auto",
         border: "1px solid #ccc",
         padding: "10px",
+        userSelect: "none",
       }}
     >
       <Grid container spacing={2}>
@@ -62,7 +63,7 @@ const dummycoursenetai = () => {
                 </Grid>
                 <Grid item xs={4}>
                   <Grid container direction="column">
-                     <h3 style={{ fontWeight: "bold", fontSize: "1.5rem" }}>
+                    <h3 style={{ fontWeight: "bold", fontSize: "1.5rem" }}>
                       {university.name}
                     </h3>
                     <p>
@@ -93,7 +94,7 @@ const dummycoursenetai = () => {
                         color="primary"
                         size="small"
                         style={{
-                          backgroundColor: "light-red",
+                          backgroundColor: "#ff6347",
                           color: "#FFF",
                           marginTop: "15px",
                         }}

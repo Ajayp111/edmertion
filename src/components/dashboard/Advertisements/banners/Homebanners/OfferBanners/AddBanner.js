@@ -25,7 +25,10 @@ function AddBanner({ addBanner }) {
   };
 
   return (
-    <div className="border-4 border-dashed border-gray-200 w-200 h-200 p-20">
+    <div
+      className="border-4 border-dashed border-gray-200 w-200 h-200 p-20"
+      style={{ userSelect: "none" }}
+    >
       <div className="h-full w-full flex items-center justify-center">
         <div>
           <form onSubmit={handleSubmit}>
@@ -43,7 +46,7 @@ function AddBanner({ addBanner }) {
               <Button
                 variant="contained"
                 component="span"
-                className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded"
+                className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
               >
                 Choose Banner File
                 <input
@@ -72,7 +75,7 @@ function AddBanner({ addBanner }) {
               type="submit"
               variant="contained"
               color="primary"
-              className="mt-4 bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded"
+              className="mt-4 bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded"
             >
               Add Banner
             </Button>

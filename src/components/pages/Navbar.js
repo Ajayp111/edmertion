@@ -31,7 +31,10 @@ const Navbar = () => {
     navigate("/users");
   };
   return (
-    <nav className="bg-white-800 text-black py-4 border-b border-gray-300">
+    <nav
+      className="bg-white-800 text-black py-4 border-b border-gray-300"
+      style={{ userSelect: "none" }}
+    >
       <div className="container mx-auto flex md:flex-row flex-col justify-between items-center">
         <div
           className="flex-shrink-0 mb-4 md:mb-0"

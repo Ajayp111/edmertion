@@ -15,7 +15,7 @@ function HomeAdver() {
   }, [banners]); // Dependency array ensures it runs when 'banners' changes
 
   return (
-    <div>
+    <div style={{ userSelect: "none" }}>
       <h1 className=" px-3 font-2xl text-xl font-bold ">
         Advertisement Banners
       </h1>

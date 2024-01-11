@@ -29,7 +29,10 @@ function AllBanners({ banners }) {
   };
 
   return (
-    <div className="grid grid-cols-1 sm:grid-cols-2 ">
+    <div
+      className="grid grid-cols-1 sm:grid-cols-2 "
+      style={{ userSelect: "none" }}
+    >
       {banners.map((banner, index) => {
         if (!banner) {
           return null;

@@ -49,8 +49,8 @@ const vidyadummy = () => {
   ];
 
   return (
-    <div style={{ padding: "10px" }}>
-      <Grid container spacing={2}>
+    <div style={{ padding: "10px", userSelect: "none" }}>
+      <Grid container spacing={2} style={{ userSelect: "none" }}>
         {ScholarShipCompany.map((scholarship) => (
           <Grid item xs={12} key={scholarship.id}>
             <Card className={classes.card}>
@@ -103,7 +103,7 @@ const vidyadummy = () => {
                         color="primary"
                         size="small"
                         style={{
-                          backgroundColor: "light-red",
+                          backgroundColor: "#ff6347",
                           color: "#FFF",
                           marginTop: "15px",
                         }}

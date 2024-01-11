@@ -25,8 +25,9 @@ function SearchComponent({ posts }) {
         onChange={handleChange}
       />
       <button
-        className="ml-2 px-5 py-3 bg-red-500 text-white rounded-md hover:bg-blue-600 focus:outline-none focus:ring focus:border-blue-500"
+        className="ml-2 px-5 py-3 text-white rounded-md hover:bg-blue-600 focus:outline-none focus:ring focus:border-blue-500"
         onClick={handleSearch}
+        style={{ background: "#ff6347" }}
       >
         Search
       </button>

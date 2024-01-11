@@ -53,7 +53,7 @@ function dummycourses({ details }) {
   const classes = UseStyles();
 
   return (
-    <div style={{ padding: "10px" }}>
+    <div style={{ padding: "10px", userSelect: "none" }}>
       <Grid container spacing={2}>
         {courseDetails.map((courseDetails) => (
           <Grid item xs={12} key={courseDetails.id}>
@@ -114,7 +114,7 @@ function dummycourses({ details }) {
                         color="primary"
                         size="small"
                         style={{
-                          backgroundColor: "red",
+                          backgroundColor: "#ff6347",
                           color: "#FFF",
                           marginTop: "15px",
                         }}

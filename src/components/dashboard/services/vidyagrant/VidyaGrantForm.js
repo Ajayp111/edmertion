@@ -53,10 +53,10 @@ function VidyaGrantForm() {
   };
 
   return (
-    <div className="p-4">
+    <div className="p-4" style={{ userSelect: "none" }}>
       <h2 className="text-xl font-bold mb-4">Add New Scholarship</h2>
       {isOpen ? (
-        <div className="p-4">
+        <div className="p-4" style={{ userSelect: "none" }}>
           <form onSubmit={handleSubmit}>
             <div>
               <div>

@@ -13,7 +13,9 @@ function Home() {
   return (
     <div>
       <div className="text-bold">
-        <h1 className="text-4xl px-3 mr-4 pb-5">Home page</h1>
+        <h1 className="text-4xl px-3 mr-4 pb-5" style={{ userSelect: "none" }}>
+          Home page
+        </h1>
       </div>
       <div style={borderedComponentStyle}>
         <Homeoffer />
@@ -23,7 +25,9 @@ function Home() {
       </div>
 
       <div>
-        <h1 className="text-4xl px-3 mr-4 pb-5">Blogs Page</h1>
+        <h1 className="text-4xl px-3 mr-4 pb-5" style={{ userSelect: "none" }}>
+          Blogs Page
+        </h1>
         <div style={borderedComponentStyle}>
           <BlogsBannerHome />
         </div>

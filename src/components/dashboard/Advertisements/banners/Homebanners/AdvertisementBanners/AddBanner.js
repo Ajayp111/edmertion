@@ -25,7 +25,10 @@ function AddBanner({ addBanner }) {
   };
 
   return (
-    <div className="border-4 border-dashed border-gray-200 w-200 h-200 p-20">
+    <div
+      className="border-4 border-dashed border-gray-200 w-200 h-200 p-20"
+      style={{ userSelect: "none" }}
+    >
       <div className="h-full w-full flex items-center justify-center">
         <div>
           <form onSubmit={handleSubmit}>

@@ -51,7 +51,10 @@ const AddCollegeForm = ({ setUniversityDetails }) => {
   };
 
   return (
-    <div className="flex justify-center items-center mt-7 lg:mr-20">
+    <div
+      className="flex justify-center items-center mt-7 lg:mr-20"
+      style={{ userSelect: "none" }}
+    >
       {!isOpen && (
         <div>
           <div className="h-full w-full flex items-center justify-center">

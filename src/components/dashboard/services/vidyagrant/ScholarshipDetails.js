@@ -29,8 +29,8 @@ const ScholarshipDetails = ({ details, onEdit, onDelete }) => {
   const classes = useStyles();
 
   return (
-    <div style={{ padding: "10px" }}>
-      <Grid container spacing={2}>
+    <div style={{ padding: "10px", userSelect: "none" }}>
+      <Grid container spacing={2} style={{ userSelect: "none" }}>
         {details.map((detail, index) => (
           <Grid item xs={12} key={index}>
             <Card className={classes.card}>

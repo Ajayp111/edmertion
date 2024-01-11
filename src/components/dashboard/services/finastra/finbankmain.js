@@ -22,7 +22,7 @@ function finbankmain() {
   const classes = UseStyles();
 
   return (
-    <div className={classes.container}>
+    <div className={classes.container} style={{ userSelect: "none" }}>
       <Grid container spacing={3}>
         {/* Image */}
         <Grid item xs={12} sm={3} className={classes.item}>

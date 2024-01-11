@@ -26,7 +26,7 @@ function FinInfo({ details }) {
   const classes = useStyles();
 
   return (
-    <div className={classes.container}>
+    <div className={classes.container} style={{ userSelect: "none" }}>
       <Grid container spacing={3}>
         {/* Replace the data in details with the actual data */}
         {details.map((bankDetails, index) => (

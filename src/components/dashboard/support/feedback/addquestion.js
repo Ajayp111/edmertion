@@ -64,7 +64,7 @@ const AddQuestion = () => {
   };
 
   return (
-    <Container maxWidth="md" style={{ marginTop: "20px" }}>
+    <Container maxWidth="md" style={{ marginTop: "20px", userSelect: "none" }}>
       <Typography variant="h4" align="center" gutterBottom>
         Questions:
       </Typography>
@@ -93,10 +93,10 @@ const AddQuestion = () => {
       </Grid>
       <Button
         variant="contained"
-        color="primary"
-        style={{ marginTop: "20px" }}
+        // color="primary"
+        style={{ marginTop: "20px", background: "#ff6347", color: "white" }}
         onClick={handleOpen}
-        className="px-5"
+        className="px-5 "
       >
         Add Question
       </Button>

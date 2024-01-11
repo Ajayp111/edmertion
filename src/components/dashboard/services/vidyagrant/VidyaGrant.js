@@ -8,7 +8,9 @@ export default function VidyaGrant() {
   return (
     <div>
       <div className=" text-black p-4 flex justify-between items-center">
-        <h1 className="text-2xl">Vidya Grant</h1>
+        <h1 className="text-2xl" style={{ userSelect: "none" }}>
+          Vidya Grant
+        </h1>
         <div></div>
       </div>
       <div className="w-full">

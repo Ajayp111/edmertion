@@ -18,6 +18,7 @@ const CollegeInfo = ({ details, onEdit, onDelete }) => {
         overflowX: "auto",
         border: "1px solid #ccc",
         padding: "10px",
+        userSelect: "none",
       }}
     >
       <Grid container spacing={2}>

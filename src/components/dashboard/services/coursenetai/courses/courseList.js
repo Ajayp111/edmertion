@@ -3,6 +3,7 @@ import { Card, Button, Grid, IconButton, makeStyles } from "@material-ui/core";
 
 const useStyles = makeStyles((theme) => ({
   card: {
+    userSelect: "none",
     height: "100%",
     width: "100%",
     [theme.breakpoints.up("sm")]: {
@@ -15,7 +16,7 @@ function CourseList({ details, onEdit, onDelete }) {
   const classes = useStyles();
 
   return (
-    <div style={{ padding: "10px" }}>
+    <div style={{ padding: "10px", userSelect: "none" }}>
       <Grid container spacing={2}>
         {details.map((courseDetails, index) => (
           <Grid item xs={12} key={index}>
@@ -77,7 +78,7 @@ function CourseList({ details, onEdit, onDelete }) {
                         color="primary"
                         size="small"
                         style={{
-                          backgroundColor: "red",
+                          backgroundColor: "#ff6347",
                           color: "#FFF",
                           marginTop: "15px",
                         }}
