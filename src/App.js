@@ -18,8 +18,8 @@ const App = () => {
       <div>
         <Navbar />
         <Routes>
-          <Route path="/" element={<Homepage />} />
-          <Route path="/users" element={<Users />} />
+          <Route path="/homepage" element={<Homepage />} />
+          <Route path="/" element={<Users />} />
           {/* <Route path="/users/:userId" element={<UserProfile />} /> */}
           <Route path="admin/dashboard" element={<Dashboard />} />
           <Route path="/analytics" element={<Analytics />} />

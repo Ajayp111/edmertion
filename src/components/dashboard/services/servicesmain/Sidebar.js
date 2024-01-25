@@ -14,10 +14,10 @@ import Home from "../../Advertisements/home";
 const useStyles = makeStyles((theme) => ({
   container: {
     display: "flex",
-    flexDirection: "column", // Change to column for mobile
+    flexDirection: "column",
     minHeight: "800px",
     [theme.breakpoints.up("lg")]: {
-      flexDirection: "row", // Change to row for larger screens
+      flexDirection: "row",
     },
   },
   sidebar: {
